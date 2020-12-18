@@ -13,9 +13,12 @@ from structure import (
 
 def main():
     parser = argparse.ArgumentParser("Crystal2d: An 2D material modeling tool")
+    parser.add_argument('-t')
     parser.add_argument('-film')
     parser.add_argument('-subs')
     parser.add_argument('-bulk')
+    parser.add_argument('-o')
+    args = parser.parse_args()
 
 
 if __name__ == '__main__':
@@ -23,7 +26,7 @@ if __name__ == '__main__':
     pth = r"./test/hetero"
     all_path = [join(pth, i) for i in os.listdir(pth)]
     fp1 = join(pth, "05_GaN001_POSCAR")
-    fp2 = join(pth, "03_Graphene_POSCAR")
+    fp2 = join(pth, "Co24Nb24Te48-surface-1,0,0.cif")
 
     mat1, mat2 = read_model_from(fp1), read_model_from(fp2)
     hetero_model = get_hetero_junction_model(mat1, mat2, write=True)
