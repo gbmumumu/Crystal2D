@@ -23,7 +23,7 @@ class Atoms:
         self.lattice = Lattice(np.asarray(lattice))
         self.elements = elements
         if elements is None and numbers is not None:
-            self.elements = [SpecieInfo['map'].value.get(str(i)) for i in numbers]
+            self.elements = [SpecieInfo['periodic_table'].value.get(str(i)) for i in numbers]
         self.coords = np.asarray(coords)
         self.is_cart = cartesian
 

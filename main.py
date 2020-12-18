@@ -19,7 +19,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # main()
     pth = r"./test/hetero"
     all_path = [join(pth, i) for i in os.listdir(pth)]
     fp1 = join(pth, "05_GaN001_POSCAR")
@@ -32,11 +32,11 @@ if __name__ == '__main__':
     fp = r"./test/2d/1005003.cif"
     fn, _ = splitext(basename(fp))
 
-    cell = list(read_model_from(fp))[0]
+    cell = read_model_from(fp)
 
     res = classify_bulk_materials(cell)
     print(res)
     get_monolayer_model(cell, central=True, unitcell=True, vacuum=10, write=True)
     nfp = r"./test/2d/1005003.cif"
-    nc = list(read_model_from(nfp))[0]
+    nc = read_model_from(nfp)
     cleave_surface_model(nc, [1, 0, 0], layers=3, write=True)

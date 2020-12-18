@@ -11,7 +11,7 @@ class SpecieInfo(Enum):
     covalent = Settings["covalent"]
     vdw = Settings["vdW"]
     jsmol = Settings["jsmol"]
-    map = Settings["map"]
+    map = Settings["periodic_table"]
     vesta = Settings["vesta"]
 
 

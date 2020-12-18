@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 from os.path import *
+from copy import deepcopy
 
 from .atoms import Atoms, np
 from .model.cluster import Cluster
@@ -35,7 +36,7 @@ def write_model(models, results_dir=None, model_type='hetero', fmt='cif'):
     return models.write_file(file_name, fmt=fmt)
 
 
-def get_hetero_junction_model(substrate, films, save_format="cif", max_area=400,
+def get_hetero_junction_model(substrate, films=None, save_format="cif", max_area=400,
                               max_area_ratio_tol=0.09,
                               ltol=0.05,
                               atol=0.1, seperation=3.0, apply_strain=False, write=False):
@@ -56,6 +57,8 @@ def get_hetero_junction_model(substrate, films, save_format="cif", max_area=400,
     Returns:
 
     """
+    if films is None:
+        films = deepcopy(substrate)
     results = make_interface(films, substrate,
                              max_area=max_area,
                              max_area_ratio_tol=max_area_ratio_tol,
